@@ -6,10 +6,10 @@ DecTxn has a dependency on the aquarium[http://aquarium.rubyforge.org/] AOP fram
 	sudo gem install aquarium
 	
 Installing the CURRENT release of DecTxn.
-	./script/plugin install http://something.com/tags/CURRENT/dectxn
+	script/plugin install http://dectxn.rubyforge.org/svn/tags/CURRENT/dectxn
 
 Installing CURRENT with -x (svn:exernals).
-	./script/plugin install -x http://something.com/tags/CURRENT/dectxn
+	script/plugin install -x http://dectxn.rubyforge.org/svn/tags/CURRENT/dectxn
 
 
 === Example
