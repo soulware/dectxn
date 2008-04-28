@@ -1,15 +1,19 @@
 == DecTxn
 
-DecTxn is a Ruby on Rails plugin that provides declarative transactions.
+DecTxn is a Ruby on Rails plugin that provides declarative transaction management.
 
 DecTxn has a dependency on the aquarium[http://aquarium.rubyforge.org/] AOP framework.
 	sudo gem install aquarium
 	
 Installing the CURRENT release of DecTxn.
-	script/plugin install http://dectxn.rubyforge.org/svn/tags/CURRENT/dectxn
+	script/plugin install http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
 
 Installing CURRENT with -x (svn:exernals).
-	script/plugin install -x http://dectxn.rubyforge.org/svn/tags/CURRENT/dectxn
+	script/plugin install -x http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
+
+
+The plugin will install <tt>my_transaction_config.rb</tt> into the Rails <tt>config/initializers</tt> dir.
+Transaction configuration can be added to this file.
 
 
 === Example
