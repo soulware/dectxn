@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Txn</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Txn</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/dectxn_rb.html">
+                lib/dectxn.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <table>
+<tr><td valign="top"><a href="Txn.html#M000001">required</a>:</td><td>Begins new or joins existing transaction.
+
+</td></tr>
+<tr><td valign="top">requires_new:</td><td>[not yet implemented]
+
+</td></tr>
+<tr><td valign="top">mandatory:</td><td>[not yet implemented]
+
+</td></tr>
+</table>
+<p>
+The method selector can be specified as a regular expression, a symbol, a
+string or a list of symbols or strings.
+</p>
+<pre>
+  Txn::required :for_type =&gt; Account, :calls_to =&gt; /^debit/
+  Txn::required :for_type =&gt; Account, :calls_to =&gt; :debit
+  Txn::required :for_type =&gt; Account, :calls_to =&gt; &quot;debit&quot;
+  Txn::required :for_type =&gt; Account, :calls_to =&gt; [:debit, :credit]
+  Txn::required :for_type =&gt; Account, :calls_to =&gt; [&quot;debit&quot;, &quot;credit&quot;]
+</pre>
+<ul>
+<li>NotSupported
+
+</li>
+<li>Supports
+
+</li>
+<li>Never
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000001">required</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Aquarium::Aspects</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">required</span><span class="method-args">(hash)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Txn::required will join an existing transaction if called from within a
+transaction. Otherwise it will automatically begin a new transaction and
+will commit the transaction if the method commits successfully. Any
+uncaught exception will rollback the transaction.
+</p>
+<h2>Example</h2>
+<p>
+Txn::required :for_type =&gt; :Account, :calls_to =&gt; :debit
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/dectxn.rb, line 40</span>
+40:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">required</span>(<span class="ruby-identifier">hash</span>)
+41:     <span class="ruby-constant">Aspect</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">:around</span>, <span class="ruby-identifier">hash</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">join_point</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>  
+42:       <span class="ruby-identifier">wrap_in_transaction</span>(<span class="ruby-identifier">join_point</span>)
+43:     <span class="ruby-keyword kw">end</span>
+44:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
