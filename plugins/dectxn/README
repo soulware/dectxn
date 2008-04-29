@@ -1,26 +1,28 @@
-== DecTxn
+== dectxn - Rails Declarative Transactions
 
-DecTxn is a Ruby on Rails plugin that provides declarative transaction management.
+dectxn is a Ruby on Rails plugin that provides declarative transaction management.
 
-DecTxn has a dependency on the aquarium[http://aquarium.rubyforge.org/] AOP framework.
-	sudo gem install aquarium
+=== Installation
 	
 Installing the CURRENT release of DecTxn.
-	script/plugin install http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
+	script/plugin install \
+	http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
 
 Installing CURRENT with -x (svn:exernals).
-	script/plugin install -x http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
+	script/plugin install -x \
+	http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
 
+The plugin will create <tt>config/initializers/dectxn_config.rb</tt>.
+Declarative transaction configuration can be added to this file.
 
-The plugin will install <tt>dectxn_config.rb</tt> into the Rails <tt>config/initializers</tt> dir.
-Transaction configuration can be added to this file.
-
+dectxn uses the aquarium (http://aquarium.rubyforge.org) AOP framework.
+	sudo gem install aquarium
 
 === Example
 
-The following line specifies calls to all methods in Account that begin "my_" will be handled with required transactional semantics.
+The following line declares that calls to all "my_xxx" methods in Account will be wrapped with required (join existing or begin new) transaction semantics.
 
 	Txn::required :for_type => Account, :calls_to => /^my_/
 
 
-Copyright (c) 2008, Simon Horne, released under the MIT license
+Copyright (c) 2008, Simon Horne, released under the MIT license.
