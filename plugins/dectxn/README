@@ -4,11 +4,11 @@ dectxn is a Ruby on Rails plugin that provides declarative transaction managemen
 
 === Installation
 	
-Installing the CURRENT release of DecTxn.
+To install the CURRENT dectxn plugin.
 	script/plugin install \
 	http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
 
-Installing CURRENT with -x (svn:exernals).
+To install the CURRENT dectxn plugin with -x (svn:externals).
 	script/plugin install -x \
 	http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
 
