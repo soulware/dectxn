@@ -13,6 +13,15 @@ describe Item do
     item.price.should == 1.0
   end
   
+  it "should change price within a txn" do
+    item = Item.create!(:name => "test item", :price => 1.0)
+    
+    item.change_price(2.0)
+    
+    item.reload
+    item.price.should == 2.0
+  end
+  
   it "should change price twice within a single txn" do
     item = Item.create!(:name => "test item")
     

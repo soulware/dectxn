@@ -39,10 +39,12 @@ module Txn
   end 
   
   #
-  # [tbc]
+  # todo - this is currently implemented incorrectly...
   #
   def self.requires_new(hash)
-    raise Exception.new("not yet implemented")
+    Aspect.new :around, hash do |join_point, obj, *args|  
+      wrap_in_transaction(join_point)
+    end
   end
   
   #
