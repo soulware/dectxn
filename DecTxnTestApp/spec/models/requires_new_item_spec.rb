@@ -25,6 +25,16 @@ describe RequiresNewItem do
   it "should raise RequiresNewException for nested transactions" do
     item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
     lambda {item.change_name_and_price("new name", 2.0)}.should raise_error(Txn::RequiresNewException)
+  end
+  
+  it "should rollback changes before raising RequiresNewException" do
+    item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
     
+    item.change_name_and_price("new name", 2.0)
+    
+    item.reload
+    
+    item.name.should == "test item"
+    item.price.should == 1.0
   end
 end
