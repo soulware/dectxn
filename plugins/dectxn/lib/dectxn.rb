@@ -1,5 +1,5 @@
 require 'aquarium'
-
+require 'dectxn_exceptions'
 #
 # required:: Begins new or joins existing transaction.
 # requires_new:: [not yet implemented]

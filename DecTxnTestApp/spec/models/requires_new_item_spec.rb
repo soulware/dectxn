@@ -21,4 +21,10 @@ describe RequiresNewItem do
     item.reload
     item.price.should == 2.0
   end
+  
+  it "should raise RequiresNewException for nested transactions" do
+    item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
+    lambda {item.change_name_and_price("new name", 2.0)}.should raise_error(Txn::RequiresNewException)
+    
+  end
 end
