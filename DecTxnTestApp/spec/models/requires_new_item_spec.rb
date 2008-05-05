@@ -30,7 +30,11 @@ describe RequiresNewItem do
   it "should rollback changes on exception for nested transactions" do
     item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
     
-    item.change_name_and_price("new name", 2.0)
+    begin
+      item.change_name_and_price("new name", 2.0)
+    rescue Txn::RequiresNewException
+      # do nothing
+    end
     
     item.reload
     
