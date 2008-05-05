@@ -27,7 +27,7 @@ describe RequiresNewItem do
     lambda {item.change_name_and_price("new name", 2.0)}.should raise_error(Txn::RequiresNewException)
   end
   
-  it "should rollback changes before raising RequiresNewException" do
+  it "should rollback changes on exception for nested transactions" do
     item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
     
     item.change_name_and_price("new name", 2.0)
