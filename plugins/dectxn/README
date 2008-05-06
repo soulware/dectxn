@@ -24,5 +24,10 @@ The following line declares that calls to all "my_xxx" methods in Account will b
 
 	Txn::required :for_type => Account, :calls_to => /^my_/
 
+=== Further Info
+
+The following transactional options are currently supported - 
+* Txn::required
+* Txn::requires_new
 
 Copyright (c) 2008, Simon Horne, released under the MIT license.

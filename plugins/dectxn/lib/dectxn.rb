@@ -1,8 +1,12 @@
+#
+# dectxn uses the Txn namespace.
+#
 require 'aquarium'
 require 'dectxn_exceptions'
+
 #
 # required:: Begins new or joins existing transaction.
-# requires_new:: [not yet implemented]
+# requires_new:: Begins new transaction (will throw Txn::RequiresNewException if within existing active transaction)
 # mandatory:: [not yet implemented]
 # not_supported:: [not yet implemented]
 # supports:: [not yet implemented]
@@ -26,9 +30,9 @@ module Txn
   # Txn::required will join an existing transaction if one is already active. 
   # If no transaction is active it will automatically begin a new transaction. 
   # Txn::required will commit a new transaction on successful method completion.
-  # A transaction will rollback if an exception is raised and not caught.
+  # Will rollback transaction if an exception is raised and not caught.
   #
-  # == Example
+  # === Example
   #
   # Txn::required :for_type => :Account, :calls_to => :debit
   #
@@ -39,7 +43,14 @@ module Txn
   end 
   
   #
-  # todo - this is currently implemented incorrectly...
+  # Txn::requires_new will automatically begin a new transaction.
+  # If called from within an existing active transaction it will raise a Txn::RequiresNewException.
+  # Txn::requires_new will commit the transaction on successful method completion.
+  # Will rollback transaction if an exception is raised and not caught.
+  #
+  # === Example
+  #
+  # Txn::requires_new :for_types => :Account, :calls_to => :reset
   #
   def self.requires_new(hash)
     Aspect.new :around, hash do |join_point, obj, *args|
