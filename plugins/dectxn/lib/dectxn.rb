@@ -42,7 +42,10 @@ module Txn
   # todo - this is currently implemented incorrectly...
   #
   def self.requires_new(hash)
-    Aspect.new :around, hash do |join_point, obj, *args|  
+    Aspect.new :around, hash do |join_point, obj, *args|
+      open_transactions = Thread.current['open_transactions']
+      raise RequiresNewException.new("") if open_transactions > 0
+      
       wrap_in_transaction(join_point)
     end
   end
