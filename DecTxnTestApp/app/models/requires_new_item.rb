@@ -15,4 +15,12 @@ class RequiresNewItem < ActiveRecord::Base
     change_name(name)
     change_price(price)
   end
+  
+  def change_name_and_price_single_txn(name, price)
+    self.price = price
+    save!
+    
+    self.name = name
+    save!
+  end
 end

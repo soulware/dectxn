@@ -44,4 +44,22 @@ describe RequiresNewItem do
     item.reload    
     item.price.should == 1.0
   end
+  
+  it "should change name and price in single transaction" do
+    item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
+    
+    item.change_name_and_price_single_txn("new name", 2.0)
+    
+    item.reload
+    item.name.should == "new name"
+  end
+  
+  it "should change name and price in single transaction" do
+    item = RequiresNewItem.create!(:name => "test item", :price => 1.0)
+    
+    item.change_name_and_price_single_txn("new name", 2.0)
+    
+    item.reload
+    item.price.should == 2.0
+  end
 end
