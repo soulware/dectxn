@@ -15,7 +15,7 @@ end
 desc 'Generate documentation for the dectxn plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'dectxn - Rails Declarative Transactions'
+  rdoc.title    = 'rdoc - dectxn - Rails Declarative Transactions'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.template = 'rdoc-template/jamis.rb'
   rdoc.rdoc_files.include('README')

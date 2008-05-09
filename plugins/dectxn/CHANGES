@@ -1,3 +1,15 @@
-== v0.1.1
+=== v0.3.x
 
-some stuff here
+[tbc]
+
+=== v0.2.1
+
+Txn::requires_new implementation - raises exception if inside existing active transaction.
+This is currently inconsistent with the Java world (JEE and Spring) but provides basic functionality.
+Ideally this would start a new transaction for the duration of the method call 
+but Rails maintains a single transaction per thread.
+
+=== v0.1.1
+
+Initial release. 
+Txn::required implemented.

@@ -73,20 +73,25 @@ body, td, p {
 .banner {
   background: #005;
   color: #FFF;
-  border: 1px solid black;
+  #border: 1px solid black;
   padding: 1em;
 }
 
-.banner td {
+.my-banner {
+  background: #005;
+  color: #FFF;
+}
+
+.banner td, .my-banner td {
   background: transparent;
   color: #FFF;
 }
 
-h1 a, h2 a, .sectiontitle a, .banner a {
+h1 a, h2 a, .sectiontitle a, .banner a, .my-banner a {
   color: #FF0;
 }
 
-h1 a:hover, h2 a:hover, .sectiontitle a:hover, .banner a:hover {
+h1 a:hover, h2 a:hover, .sectiontitle a:hover, .banner a:hover, .my-banner a:hover {
   color: #FF7;
 }
 
@@ -246,6 +251,10 @@ HEADER = XHTML_PREAMBLE + <<ENDHEADER
 ENDHEADER
 
 FILE_PAGE = <<HTML
+<table width="100%" border='0' cellpadding='0' cellspacing='0' class="my-banner">
+<tr><td align="center"><a target="_new" href="http://dectxn.rubyforge.org">dectxn - Rails Declarative Transactions</a>&nbsp;&nbsp;</td></tr>
+<tr><td align="center"><a target="_new" href="http://dectxn.blogspot.com">dectxn - Blog</a>&nbsp;&nbsp;</td></tr>
+</table>
 <table border='0' cellpadding='0' cellspacing='0' width="100%" class='banner'>
   <tr><td>
     <table width="100%" border='0' cellpadding='0' cellspacing='0'><tr>
@@ -274,7 +283,12 @@ HTML
 ###################################################################
 
 CLASS_PAGE = <<HTML
-<table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+<table width="100%" border='0' cellpadding='0' cellspacing='0' class="my-banner">
+<tr><td align="center"><a target="_new" href="http://dectxn.rubyforge.org">dectxn - Rails Declarative Transactions</a>&nbsp;&nbsp;</td></tr>
+<tr><td align="center"><a target="_new" href="http://dectxn.blogspot.com">dectxn - Blog</a>&nbsp;&nbsp;</td></tr>
+</table>
+<table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'>
+<tr>
   <td class="file-title"><span class="file-title-prefix">%classmod%</span><br />%full_name%</td>
   <td align="right">
     <table cellspacing="0" cellpadding="2">
@@ -535,6 +549,14 @@ FILE_INDEX = XHTML_PREAMBLE + <<HTML
     background: #005;
     color: #FFF;
     padding: 0.2em;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+  }
+  .my-banner {
+    background: #005;
+    color: #FFF;
+    #padding: 0.2em;
     font-size: small;
     font-weight: bold;
     text-align: center;
