@@ -19,6 +19,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.template = 'rdoc-template/jamis.rb'
   rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('CHANGES')
+  rdoc.rdoc_files.include('CHANGELOG')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
