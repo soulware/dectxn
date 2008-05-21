@@ -14,9 +14,17 @@ module Txn
   
   #
   # Thrown in Txn::requires_new if attempt 
-  # is made to start a new transaction while
+  # is made to start a new transaction
   # within an existing active transaction.
   #
   class RequiresNewException < DecTxnException
+  end
+  
+  #
+  # Thrown in Txn::mandatory if attempt 
+  # is made to start a new transaction 
+  # within an existing active transaction.
+  #
+  class MandatoryException < DecTxnException
   end
 end

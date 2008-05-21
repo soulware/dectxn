@@ -63,7 +63,10 @@ module Txn
   # [tbc]
   #
   def self.mandatory(hash)
-    raise Exception.new("not yet implemented")
+    Aspect.new :around, hash do |join_point, obj, *args|
+      raise MandatoryException.new("") if Thread.current['open_transactions'].to_i > 0      
+      wrap_in_transaction(join_point)
+    end
   end
   
   #
