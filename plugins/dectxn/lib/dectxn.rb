@@ -54,9 +54,7 @@ module Txn
   #
   def self.requires_new(hash)
     Aspect.new :around, hash do |join_point, obj, *args|
-      open_transactions = Thread.current['open_transactions']
-      raise RequiresNewException.new("") if open_transactions > 0
-      
+      raise RequiresNewException.new("") if Thread.current['open_transactions'].to_i > 0      
       wrap_in_transaction(join_point)
     end
   end
