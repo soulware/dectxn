@@ -11,7 +11,8 @@
 # /DecTxnTestApp/log/
 /DecTxnTestApp/log/*.log
 
-# /DecTxnTestApp/vendor/plugins/
+# simon - .git dirs for plugins need to be ignored
+/DecTxnTestApp/vendor/plugins/*/.git
 
 # /plugins/dectxn/
 /plugins/dectxn/rdoc
