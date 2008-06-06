@@ -1,0 +1,17 @@
+
+# /
+/*.tmp*
+
+# /DecTxnTestApp/
+/DecTxnTestApp/tmp
+
+# /DecTxnTestApp/db/
+/DecTxnTestApp/db/*.sqlite3
+
+# /DecTxnTestApp/log/
+/DecTxnTestApp/log/*.log
+
+# /DecTxnTestApp/vendor/plugins/
+
+# /plugins/dectxn/
+/plugins/dectxn/rdoc
