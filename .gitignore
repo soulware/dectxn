@@ -13,6 +13,8 @@
 
 # simon - .git dirs for plugins need to be ignored
 /DecTxnTestApp/vendor/plugins/*/.git
+/DecTxnTestApp/vendor/plugins/dectxn
+
 
 # /plugins/dectxn/
 /plugins/dectxn/rdoc
