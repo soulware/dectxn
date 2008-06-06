@@ -7,7 +7,7 @@ require 'dectxn_exceptions'
 #
 # required:: Begins new or joins existing transaction.
 # requires_new:: Begins new transaction (will throw Txn::RequiresNewException if within existing active transaction)
-# mandatory:: [not yet implemented]
+# mandatory:: Begins new transaction (will throw Txn::MandatoryException if within existing active transaction)
 # not_supported:: [not yet implemented]
 # supports:: [not yet implemented]
 # never:: [??? - what is this compared to not_supported?]
@@ -34,7 +34,7 @@ module Txn
   #
   # === Example
   #
-  # Txn::required :for_type => :Account, :calls_to => :debit
+  # Txn::required :for_type => Account, :calls_to => :debit
   #
   def self.required(hash)
     Aspect.new :around, hash do |join_point, obj, *args|  
@@ -50,7 +50,7 @@ module Txn
   #
   # === Example
   #
-  # Txn::requires_new :for_types => :Account, :calls_to => :reset
+  # Txn::requires_new :for_type => Account, :calls_to => :reset
   #
   def self.requires_new(hash)
     Aspect.new :around, hash do |join_point, obj, *args|
@@ -61,6 +61,10 @@ module Txn
   
   #
   # [tbc]
+  #
+  # === Example
+  #
+  # Txn::mandatory :for_type => Account, :calls_to => :reset
   #
   def self.mandatory(hash)
     Aspect.new :around, hash do |join_point, obj, *args|
