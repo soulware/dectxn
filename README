@@ -4,16 +4,10 @@ dectxn is a Ruby on Rails plugin that provides declarative transaction managemen
 
 === Installation
 	
-To install the CURRENT dectxn plugin.
-	script/plugin install \
-	http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
-
-To install the CURRENT dectxn plugin with -x (svn:externals).
-	script/plugin install -x \
-	http://dectxn.rubyforge.org/svn/tags/CURRENT/plugins/dectxn
+script/plugin install git://github.com/soulware/dectxn.git
 
 The plugin will create <tt>config/initializers/dectxn_config.rb</tt>.
-Declarative transaction configuration can be added to this file.
+This is where your transactions can be configured.
 
 dectxn uses the aquarium (http://aquarium.rubyforge.org) AOP framework.
 	sudo gem install aquarium
